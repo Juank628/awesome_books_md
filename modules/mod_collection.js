@@ -1,5 +1,5 @@
 export class Collection {
-  constructor(collectionName, items){
+  constructor(collectionName, items) {
     this.collectionName = collectionName;
     this.items = items;
   }
@@ -14,12 +14,12 @@ export class Collection {
   }
 
   removeBook(itemToRemove) {
-    console.log(itemToRemove)
-    this.items.splice(itemToRemove, 1)
+    console.log(itemToRemove);
+    this.items.splice(itemToRemove, 1);
     localStorage.setItem(this.collectionName, JSON.stringify(this.items));
   }
 
-  getBooks(){
-    return this.items
+  getBooks() {
+    return this.items;
   }
 }

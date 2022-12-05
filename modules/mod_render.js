@@ -1,6 +1,6 @@
 export class Render {
   constructor(parentElement) {
-    this.parentElement = parentElement
+    this.parentElement = parentElement;
   }
 
   show(array) {
