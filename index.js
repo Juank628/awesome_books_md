@@ -1,65 +1,44 @@
+import { Navigation } from './modules/mod_navigation.js';
+import { Collection } from './modules/mod_collection.js';
+import { Render } from './modules/mod_render.js'
+
 const addButton = document.getElementById('btn-add');
+const list_link = document.getElementById('list-link');
+const add_link = document.getElementById('add-link');
+const contact_link = document.getElementById('contact-link');
+const list_section = document.getElementById('list-sec');
+const add_section = document.getElementById('add-sec');
+const contact_section = document.getElementById('contact-sec');
 
-class UI {
-  constructor(books, removeButtons, listSection, title, author) {
-    this.books = books || [];
-    this.removeButtons = removeButtons;
-    this.listSection = listSection;
-    this.title = title;
-    this.author = author;
-  }
+const navigation = new Navigation([list_section, add_section, contact_section]);
+const books = new Collection('books', JSON.parse(localStorage.getItem('books')) || []);
+const render = new Render(list_section)
 
-  showList() {
-    let listHtml = '';
-    for (let i = 0; i < this.books.length; i += 1) {
-      listHtml += `
-          <div class="book-row" id="book-${i}">
-            <p>${this.books[i].title}</p>
-            <p>${this.books[i].author}</p>
-            <button id="btn-book-${i}" data-index=${i} class="btn-remove">Remove</button> 
-            <hr>
-          </div>`;
-    }
-    this.listSection.innerHTML = listHtml;
-    this.addRevomeEvents(); /* eslint-disable-line */
-  }
+list_link.addEventListener('click', (e) => {
+  e.preventDefault();
+  navigation.show('list-sec', 'block');
+  render.show(books.getBooks())
+});
 
-  addBook() {
-    console.log(this);
-    this.title = document.getElementById('title').value;
-    this.author = document.getElementById('author').value;
-    const newBook = {
-      title: this.title,
-      author: this.author,
-    };
-    this.books.push(newBook);
-    this.showList();
-    localStorage.setItem('books', JSON.stringify(this.books));
-  }
+add_link.addEventListener('click', (e) => {
+  e.preventDefault();
+  navigation.show('add-sec', 'flex');
+});
 
-  removeBook(e) {
-    const titleToRemove = e.currentTarget.previousElementSibling.previousElementSibling.textContent;
-    this.books = this.books.filter((book) => book.title !== titleToRemove);
-    this.showList();
-    localStorage.setItem('books', JSON.stringify(this.books));
-  }
+contact_link.addEventListener('click', (e) => {
+  e.preventDefault();
+  navigation.show('contact-sec', 'block');
+});
 
-  addRevomeEvents() {
-    this.removeButtons = document.querySelectorAll('.btn-remove');
-    this.removeButtons.forEach((button) => {
-      button.addEventListener('click', (e) => this.removeBook(e));
-    });
-  }
-}
-
-const collection = new UI(
-  JSON.parse(localStorage.getItem('books')),
-  document.querySelectorAll('.btn-remove'),
-  document.getElementById('list-sec'),
-  document.getElementById('title'),
-  document.getElementById('author')
+addButton.addEventListener('click', () =>
+  books.addBook(
+    document.getElementById('title').value,
+    document.getElementById('author').value
+  )
 );
 
-collection.showList();
-
-addButton.addEventListener('click', () => collection.addBook());
+list_section.addEventListener('click', (e) => {
+    if (!e.target.matches('.btn-remove')) return;
+    books.removeBook(e.target.dataset.index)
+    render.show(books.getBooks())
+})

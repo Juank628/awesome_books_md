@@ -48,6 +48,10 @@ body {
   padding: 5px;
 }
 
+.book-row p {
+  margin-right: 1ch;
+}
+
 .btn-remove {
   margin-left: auto;
 }
@@ -84,11 +88,12 @@ body {
   width: 100%;
 }
 
-.contact {
+.contact-sec {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 #list-sec {

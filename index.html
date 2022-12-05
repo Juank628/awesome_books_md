@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css">
     <title>Document</title>
   </head>
   <body>
     <header>
       <nav class="nav-container">
         <ul class="nav-list">
-          <li class="nav-link"><a id="listshow" href="#">List</a></li>
-          <li class="nav-link"><a id="addshow" href="#">Add New</a></li>
-          <li class="nav-link"><a id="contactshow" href="#">Contact</a></li>
+          <li class="nav-link"><a id="list-link" href="#">List</a></li>
+          <li class="nav-link"><a id="add-link" href="#">Add New</a></li>
+          <li class="nav-link"><a id="contact-link" href="#">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -33,20 +34,17 @@
             placeholder="author"
             required
           /><br />
-          <button type="submit" id="btn-add">Add</button>
+          <button type="button" id="btn-add">Add</button>
         </form>
       </section>
 
-      <section class="contact">
+      <section id="contact-sec" class="contact-sec">
         <h1>Contact information</h1>
         <p>Do you have any question or you just want to say "Hello"?</p>
         <p>You can reach out us!</p>
         <ul>
-          <li>Our email: ivanmvh@gmail.com</li>
           <li>Our email: jsanchez_zunino@yahoo.com</li>
-          <li>Our phone number: +57-319-453-7580</li>
           <li>Our phone number: +51-956-382-973</li>
-          <li>Our address: Cali, Colombia</li>
           <li>Our address: Lima, Peru</li>
         </ul>
       </section>
@@ -54,5 +52,6 @@
     <footer class="footer-container">
       <p>Copyright...</p>
     </footer>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
