@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav class="nav-container">
+        <ul class="nav-list">
+          <li class="nav-link"><a id="list-link" href="#">List</a></li>
+          <li class="nav-link"><a id="add-link" href="#">Add New</a></li>
+          <li class="nav-link"><a id="contact-link" href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="header-sec">
+        <h1>Awesome Books</h1>
+      </section>
+      <section class="date-container">
+        <p class="date-text"></p>
+      </section>
+
+      <section id="list-sec"></section>
+
+      <section id="add-sec">
+        <h2>Book title and author</h2>
+        <form>
+          <input id="title" name="title" placeholder="title" required /><br />
+          <input
+            id="author"
+            name="author"
+            placeholder="author"
+            required
+          /><br />
+          <button type="button" id="btn-add">Add</button>
+        </form>
+      </section>
+
+      <section id="contact-sec" class="contact-sec">
+        <h1>Contact information</h1>
+        <p>Do you have any question or you just want to say "Hello"?</p>
+        <p>You can reach out us!</p>
+        <ul>
+          <li>Our email: jsanchez_zunino@yahoo.com</li>
+          <li>Our phone number: +51-956-382-973</li>
+          <li>Our address: Lima, Peru</li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer-container">
+      <p>Copyright...</p>
+    </footer>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
