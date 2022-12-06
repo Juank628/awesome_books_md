@@ -1,4 +1,4 @@
-export class Navigation {
+export default class Navigation {
   constructor(pages) {
     this.pages = pages;
   }

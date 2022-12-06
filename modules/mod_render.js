@@ -1,4 +1,4 @@
-export class Render {
+export default class Render {
   constructor(parentElement) {
     this.parentElement = parentElement;
   }

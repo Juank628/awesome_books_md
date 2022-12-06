@@ -1,4 +1,4 @@
-export class Collection {
+export default class Collection {
   constructor(collectionName, items) {
     this.collectionName = collectionName;
     this.items = items;
@@ -14,7 +14,6 @@ export class Collection {
   }
 
   removeBook(itemToRemove) {
-    console.log(itemToRemove);
     this.items.splice(itemToRemove, 1);
     localStorage.setItem(this.collectionName, JSON.stringify(this.items));
   }

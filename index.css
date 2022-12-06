@@ -30,7 +30,7 @@ body {
   padding: 10px 10px;
   background-color: rgb(245, 205, 245);
   align-items: center;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 #header-sec h1 {
@@ -115,4 +115,14 @@ body {
 
 #btn-add {
   width: 100px;
+}
+
+.date-container {
+  margin-bottom: 20px;
+}
+
+.date-text {
+  text-align: end;
+  padding: 0 20px;
+  font-size: 14px;
 }

@@ -1,47 +1,56 @@
-import { Navigation } from './modules/mod_navigation.js';
-import { Collection } from './modules/mod_collection.js';
-import { Render } from './modules/mod_render.js';
+import Navigation from './modules/mod_navigation.js';
+import Collection from './modules/mod_collection.js';
+import Render from './modules/mod_render.js';
+import { DateTime } from './node_modules/luxon/build/es6/luxon.js';
 
 const addButton = document.getElementById('btn-add');
-const list_link = document.getElementById('list-link');
-const add_link = document.getElementById('add-link');
-const contact_link = document.getElementById('contact-link');
-const list_section = document.getElementById('list-sec');
-const add_section = document.getElementById('add-sec');
-const contact_section = document.getElementById('contact-sec');
+const listLink = document.getElementById('list-link');
+const addLink = document.getElementById('add-link');
+const contactLink = document.getElementById('contact-link');
+const listSection = document.getElementById('list-sec');
+const addSection = document.getElementById('add-sec');
+const contactSection = document.getElementById('contact-sec');
+const dateText = document.querySelector('.date-text');
 
-const navigation = new Navigation([list_section, add_section, contact_section]);
+const navigation = new Navigation([listSection, addSection, contactSection]);
 const books = new Collection(
   'books',
-  JSON.parse(localStorage.getItem('books')) || []
+  JSON.parse(localStorage.getItem('books')) || [],
 );
-const render = new Render(list_section);
+const render = new Render(listSection);
 
-list_link.addEventListener('click', (e) => {
+listLink.addEventListener('click', (e) => {
   e.preventDefault();
   navigation.show('list-sec', 'block');
   render.show(books.getBooks());
 });
 
-add_link.addEventListener('click', (e) => {
+addLink.addEventListener('click', (e) => {
   e.preventDefault();
   navigation.show('add-sec', 'flex');
 });
 
-contact_link.addEventListener('click', (e) => {
+contactLink.addEventListener('click', (e) => {
   e.preventDefault();
   navigation.show('contact-sec', 'block');
 });
 
-addButton.addEventListener('click', () =>
+addButton.addEventListener('click', () => {
   books.addBook(
     document.getElementById('title').value,
-    document.getElementById('author').value
-  )
-);
+    document.getElementById('author').value,
+  );
+});
 
-list_section.addEventListener('click', (e) => {
+listSection.addEventListener('click', (e) => {
   if (!e.target.matches('.btn-remove')) return;
   books.removeBook(e.target.dataset.index);
   render.show(books.getBooks());
 });
+
+setInterval(() => {
+  const {
+    monthLong, day, year, hour, minute, second,
+  } = DateTime.now();
+  dateText.textContent = `${monthLong} ${day}th ${year}, ${hour}:${minute}:${second}`;
+}, 1000);
