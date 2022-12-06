@@ -4,7 +4,7 @@ export default class Collection {
     this.items = items;
   }
 
-  addBook(title, author) {
+  addBook = (title, author) => {
     const newBook = {
       title,
       author,
@@ -13,12 +13,10 @@ export default class Collection {
     localStorage.setItem(this.collectionName, JSON.stringify(this.items));
   }
 
-  removeBook(itemToRemove) {
+  removeBook = (itemToRemove) => {
     this.items.splice(itemToRemove, 1);
     localStorage.setItem(this.collectionName, JSON.stringify(this.items));
   }
 
-  getBooks() {
-    return this.items;
-  }
+  getBooks = () => this.items;
 }

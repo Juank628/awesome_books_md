@@ -3,7 +3,7 @@ export default class Navigation {
     this.pages = pages;
   }
 
-  show(pageIdToShow, display) {
+  show = (pageIdToShow, display) => {
     this.pages.forEach((page) => {
       if (pageIdToShow === page.id) {
         page.style.display = display;
@@ -11,5 +11,5 @@ export default class Navigation {
         page.style.display = 'none';
       }
     });
-  }
+  };
 }

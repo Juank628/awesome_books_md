@@ -35,7 +35,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [your_project_name] <a name="about-project"></a>
+# 📖 Awesome Books <a name="about-project"></a>
 
 "Awesome books" is a simple website that displays a list of books and allows you to add and remove books from that list. By building this application, we learned how to manage data using JavaScript. Thanks to that your website will be more interactive. We used a medium-fidelity wireframe to build the UI.
 
